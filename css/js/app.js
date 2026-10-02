@@ -1,6 +1,6 @@
 "use strict";
 
-// ---- Element references ----
+
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const loadSamplesBtn = document.getElementById("loadSamplesBtn");
@@ -13,11 +13,11 @@ const completedCount = document.getElementById("completedCount");
 const EMPTY_MESSAGE = "Task cannot be empty";
 let taskCounter = 0;
 
-// ---- Helpers ----
+
 function generateTaskId() {
   taskCounter += 1;
   let id = "task-" + taskCounter;
-  // Guarantee uniqueness even if an id already exists in the DOM
+  
   while (taskList.querySelector('[data-task-id="' + id + '"]')) {
     taskCounter += 1;
     id = "task-" + taskCounter;
@@ -25,7 +25,7 @@ function generateTaskId() {
   return id;
 }
 
-// ---- Required functions ----
+
 function createTaskElement(taskText, taskId) {
   const li = document.createElement("li");
   li.className = "task-item";
@@ -159,7 +159,7 @@ function loadSampleTasks() {
   updateTaskCounts();
 }
 
-// ---- Event wiring ----
+
 addTaskBtn.addEventListener("click", function () {
   addTask(taskInput.value);
 });
@@ -172,8 +172,8 @@ taskInput.addEventListener("keydown", function (event) {
 
 loadSamplesBtn.addEventListener("click", loadSampleTasks);
 
-// The single delegated click listener for all task actions
+
 taskList.addEventListener("click", handleTaskListClick);
 
-// Initial state
+
 updateTaskCounts();
